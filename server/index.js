@@ -3,12 +3,16 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+const postRoutes = require("./routes/posts.js");
+
 /*import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";*/
 
 const app = express();
+
+app.use("/posts", postRoutes); // toutes les routes vont commencer par /posts
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
