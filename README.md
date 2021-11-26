@@ -24,6 +24,8 @@ npm redux
 
 npm redux-thunk permet de faire de l'Async avec redux
 
+npm install @material-ui/core UI kit
+
 """"""""""""""""""""""""""
 
 Projet un peu similaire à une todolist mais qui au lie d'ajouter des tâches ajoute des souvenirs
