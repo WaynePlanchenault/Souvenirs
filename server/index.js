@@ -12,11 +12,11 @@ import cors from "cors";*/
 
 const app = express();
 
-app.use("/posts", postRoutes); // toutes les routes vont commencer par /posts
-
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+
+app.use("/posts", postRoutes); // toutes les routes vont commencer par /posts
 
 const CONNECTION_URL = // créer une sécurité pour cacher le pseudo et mdp
   "mongodb+srv://WaynePlanchenault:WayneADMIN@freecluster.nz1xu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
