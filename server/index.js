@@ -10,7 +10,9 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";*/
 
+const helmet = require("helmet");
 const app = express();
+app.use(helmet.frameguard({ action: "SAMEORIGIN" }));
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));

@@ -12,7 +12,7 @@ const getPosts = async (req, res) => {
 };
 
 const createPost = async (req, res) => {
-  const body = req.body;
+  const post = req.body;
 
   const newPost = new PostMessage(post);
   try {
