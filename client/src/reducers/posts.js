@@ -1,5 +1,11 @@
+import { post } from "../../../server/routes/posts";
+
 export default (posts = [], action) => {
   switch (action.type) {
+    case "UPDATE":
+      return posts.map((post) =>
+        post._id === action.payload._id ? action.payload : post
+      );
     case "FETCH_ALL":
       return action.payload;
     case "CREATE":
@@ -8,3 +14,5 @@ export default (posts = [], action) => {
       return posts;
   }
 };
+
+// action.payload is the updated post
