@@ -1,3 +1,4 @@
+const { Mongoose } = require("mongoose");
 const PostMessage = require("../models/postMessage.js");
 
 const getPosts = async (req, res) => {
@@ -25,5 +26,24 @@ const createPost = async (req, res) => {
   }
 };
 
-module.exports = { getPosts: getPosts, createPost: createPost };
+const updatePost = async (req, res) => {
+  const { id: _id } = req.params;
+  // check if _id is a mongoose object id
+  const post = req.body;
+
+  if (!Mongoose.Types.ObjectId.isValid(_id))
+    return res.status(404).send("No post with that id");
+
+  const updatedPost = await PostMessage.findByIdAndUpdate(_id, post, {
+    new: true,
+  });
+
+  res.json(updatedPost);
+};
+
+module.exports = {
+  getPosts: getPosts,
+  createPost: createPost,
+  updatePost: updatePost,
+};
 // si double ligne de module exports Error: Route.get() requires a callback function but got a [object Undefined]
